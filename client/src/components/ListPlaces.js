@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react'
+import EditPlaces from './EditPlaces'
 
 const ListPlaces = () => {
 
@@ -18,7 +19,7 @@ const ListPlaces = () => {
         }
     }
 
-
+//get places
     const getPlaces = async () => {
         try {
             const response = await fetch("http://localhost:5000/places/")
@@ -48,7 +49,9 @@ const ListPlaces = () => {
       {places.map(place => (
           <tr key={place.placeid}>
               <td>{place.placename}</td>
-              <td>Edit</td>
+              <td>
+                  <EditPlaces/>
+              </td>
               <td>
                   <button className="btn btn-danger" onClick={() => deletePlace(place.placeid)}>Delete</button>
               </td>
